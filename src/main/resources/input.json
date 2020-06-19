@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "producerId": 1,
+    "operUID": "100000000000000001",
+    "host": "host1.domain1.example.com",
+    "status": "INITIAL",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 2,
+    "producerId": 1,
+    "operUID": "100000000000000001",
+    "host": "host1.domain1.example.com",
+    "status": "WAITING",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 3,
+    "producerId": 1,
+    "operUID": "100000000000000001",
+    "host": "host1.domain1.example.com",
+    "status": "IN_PROGRESS",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 4,
+    "producerId": 1,
+    "operUID": "100000000000000002",
+    "host": "host1.domain1.example.com",
+    "status": "SUCCESS",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 5,
+    "producerId": 1,
+    "operUID": "100000000000000002",
+    "host": "host1.domain1.example.com",
+    "status": "ERROR",
+    "type": "DISTRIBUTION",
+    "error": "Error distribution"
+  },
+  {
+    "id": 6,
+    "producerId": 1,
+    "operUID": "100000000000000002",
+    "host": "host1.domain1.example.com",
+    "status": "ERROR",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 7,
+    "producerId": 1,
+    "operUID": "100000000000000003",
+    "host": "host1.domain1.example.com",
+    "status": "ERROR",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 8,
+    "producerId": 1,
+    "operUID": "100000000000000003",
+    "host": "host1.domain1.example.com",
+    "status": "EMPTY",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 9,
+    "producerId": 1,
+    "operUID": "100000000000000003",
+    "host": "host1.domain1.example.com",
+    "status": "EMPTY",
+    "type": "DISTRIBUTION"
+  },
+  {
+    "id": 10,
+    "producerId": 1,
+    "operUID": "100000000000000003",
+    "host": "host1.domain1.example.com",
+    "status": "SUCCESS",
+    "type": "DISTRIBUTION"
+  }
+]

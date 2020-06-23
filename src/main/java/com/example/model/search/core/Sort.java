@@ -3,7 +3,6 @@ package com.example.model.search.core;
 import com.example.utils.JsonUtils;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class Sort implements Serializable {
@@ -23,15 +22,15 @@ public class Sort implements Serializable {
         this.desc = desc;
     }
 
-    public static Sort create(@NotEmpty String property, Boolean desc) {
+    public static Sort create(String property, Boolean desc) {
         return new Sort(property, desc);
     }
 
-    public static Sort asc(@NotEmpty String property) {
+    public static Sort asc(String property) {
         return new Sort(property);
     }
 
-    public static Sort desc(@NotEmpty String property) {
+    public static Sort desc(String property) {
         return new Sort(property, Boolean.TRUE);
     }
 

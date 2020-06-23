@@ -1,7 +1,9 @@
 package com.example.model.api;
 
 import com.example.model.Input;
+import com.example.model.InputCreator;
 import com.example.model.InputStatus;
+import com.example.model.InputUpdater;
 import com.example.model.SubscriptionType;
 import com.example.utils.Format;
 import com.example.utils.Messages;
@@ -11,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class InputRequest {
+public class InputRequest implements InputCreator, InputUpdater {
 
     @JsonProperty
     private Long id;
@@ -46,10 +48,12 @@ public class InputRequest {
     @Length(max = Format.LENGTH_DEFAULT, message = Messages.ERROR_STATUS_MESSAGE_MAX_LENGTH)
     private String statusMessage;
 
+    @Override
     public Input createInput() {
         return updateInput(new Input(id));
     }
 
+    @Override
     public Input updateInput(Input input) {
         input.setOperUID(operUID);
         input.setHost(host);

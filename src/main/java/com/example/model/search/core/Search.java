@@ -15,13 +15,21 @@ import java.util.Set;
 
 public class Search implements Serializable {
 
-    private final List<Filter> filters = CollectionUtils.createArrayList();
     private final Map<String, String> aliases = MapUtils.createHashMap();
+    private final List<Sort> sorts = CollectionUtils.createArrayList();
+    private final List<Filter> filters = CollectionUtils.createArrayList();
     private int offset = 0;
     private int limit = 10;
     private int pageNumber = 1;
     private int pageSize = 10;
-    private List<Sort> sorts = CollectionUtils.createArrayList();
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
 
     public void setPagination(Integer pageNumber, Integer pageSize) {
         this.pageNumber = pageNumber != null ? pageNumber : 1;
@@ -56,12 +64,8 @@ public class Search implements Serializable {
         }
     }
 
-    public int getPageNumber() {
-        return pageNumber;
-    }
-
-    public int getPageSize() {
-        return pageSize;
+    public List<Filter> getFilters() {
+        return filters;
     }
 
     public void addFilter(Filter filter) {
@@ -75,49 +79,26 @@ public class Search implements Serializable {
         return aliases;
     }
 
-    public boolean hasFilters() {
-        return !filters.isEmpty();
-    }
-
-    public List<Filter> getFilters() {
-        return filters;
-    }
-
     public List<Sort> getSorts() {
         return sorts;
     }
 
-    public final void setSort(String sort) {
-        setSort(sort, Boolean.FALSE);
-    }
-
-    public final void setSort(String sort, Boolean desc) {
-        if (isValidSort(sort)) {
-            resetSort();
-            addSort(Sort.create(sort, desc));
-        }
-    }
-
-    public final void addSort(String sort) {
+    public void addSort(String sort) {
         addSort(sort, Boolean.FALSE);
     }
 
-    public final void addSort(String sort, Boolean desc) {
+    public void addSort(String sort, Boolean desc) {
         if (isValidSort(sort)) {
             addSort(Sort.create(sort, desc));
         }
-    }
-
-    private boolean isValidSort(String sort) {
-        return StringUtils.isNotEmpty(sort) && getValidSorts().contains(sort);
     }
 
     protected Set<String> getValidSorts() {
         return Collections.emptySet();
     }
 
-    protected void resetSort() {
-        sorts = CollectionUtils.createArrayList();
+    private boolean isValidSort(String sort) {
+        return StringUtils.isNotEmpty(sort) && getValidSorts().contains(sort);
     }
 
     private void addSort(Sort sort) {

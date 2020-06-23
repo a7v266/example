@@ -1,6 +1,8 @@
 package com.example.model.api;
 
 import com.example.model.Producer;
+import com.example.model.ProducerCreator;
+import com.example.model.ProducerUpdater;
 import com.example.utils.Format;
 import com.example.utils.Messages;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-public class ProducerRequest {
+public class ProducerRequest implements ProducerCreator, ProducerUpdater {
 
     @JsonProperty
     private Long id;
@@ -41,10 +43,12 @@ public class ProducerRequest {
     @NotNull(message = Messages.ERROR_ACTIVE_EMPTY)
     private Boolean active;
 
+    @Override
     public Producer createProducer() {
         return updateProducer(new Producer(id));
     }
 
+    @Override
     public Producer updateProducer(Producer producer) {
         producer.setName(name);
         producer.setCode(code);

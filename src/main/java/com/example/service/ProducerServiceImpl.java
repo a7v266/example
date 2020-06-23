@@ -1,7 +1,7 @@
 package com.example.service;
 
 import com.example.model.Producer;
-import com.example.model.api.ProducerRequest;
+import com.example.model.ProducerCreator;
 import com.example.model.search.ProducerSearch;
 import com.example.service.persistence.ProducerPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class ProducerServiceImpl implements ProducerService {
     }
 
     @Override
-    public Producer saveProducer(ProducerRequest request) {
-        return producerPersistence.merge(request.createProducer());
+    public Producer saveProducer(ProducerCreator creator) {
+        return producerPersistence.merge(creator.createProducer());
     }
 }

@@ -1,7 +1,9 @@
 package com.example.model;
 
 import com.example.utils.Format;
+import com.example.utils.JsonUtils;
 import com.example.utils.Messages;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
@@ -28,33 +30,40 @@ import javax.validation.constraints.NotNull;
 @Table(name = "input")
 public class Input extends BaseEntity {
 
+    @JsonProperty
     @ManyToOne
     @JoinColumn(name = "producer_id", updatable = false)
     @NotNull(message = Messages.ERROR_PRODUCER_ID_EMPTY)
     private Producer producer;
 
+    @JsonProperty
     @Column(name = "oper_uid")
     @NotEmpty(message = Messages.ERROR_OPER_UID_EMPTY)
     @Length(max = Format.LENGTH_DEFAULT, message = Messages.ERROR_OPER_UID_MAX_LENGTH)
     private String operUID;
 
+    @JsonProperty
     @Column(name = "host")
     @NotEmpty(message = Messages.ERROR_HOST_EMPTY)
     @Length(max = Format.LENGTH_DEFAULT, message = Messages.ERROR_HOST_MAX_LENGTH)
     private String host;
 
+    @JsonProperty
     @Column(name = "status")
     @NotNull(message = Messages.ERROR_STATUS_EMPTY)
     private InputStatus status;
 
+    @JsonProperty
     @Column(name = "type")
     @NotNull(message = Messages.ERROR_TYPE_EMPTY)
     private SubscriptionType type;
 
+    @JsonProperty
     @Column(name = "error")
     @Length(max = Format.LENGTH_DEFAULT, message = Messages.ERROR_STATUS_MESSAGE_MAX_LENGTH)
     private String error;
 
+    @JsonProperty
     @Column(name = "status_message")
     @Length(max = Format.LENGTH_DEFAULT, message = Messages.ERROR_STATUS_MESSAGE_MAX_LENGTH)
     private String statusMessage;
@@ -120,5 +129,10 @@ public class Input extends BaseEntity {
 
     public void setStatusMessage(String statusMessage) {
         this.statusMessage = statusMessage;
+    }
+
+    @Override
+    public String toString() {
+        return JsonUtils.serialize(this);
     }
 }
